@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "photobackup"
+dynamic = ["version"]
+description = "Windows desktop app that backs up and organises photos and videos from iPhone and Android phones over USB."
+readme = "README.md"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md"]
+authors = [{ name = "Craig Dennis" }]
+requires-python = ">=3.10"
+dependencies = [
+    "PySide6>=6.6",
+    "comtypes>=1.4",
+    "Pillow>=10.0",
+    "pillow-heif>=0.16",
+    "pymediainfo>=6.1",
+    "platformdirs>=4.0",
+]
+keywords = ["photo backup", "iphone", "android", "mtp", "wpd", "windows"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Win32 (MS Windows)",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: System :: Archiving :: Backup",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pyinstaller>=6.0"]
+
+[project.gui-scripts]
+photobackup = "photobackup.main:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "photobackup.__version__" }
+
+[tool.setuptools.packages.find]
+include = ["photobackup*"]
+
+[tool.setuptools.package-data]
+photobackup = ["assets/*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

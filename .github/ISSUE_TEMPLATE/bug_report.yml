@@ -1,0 +1,46 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: phone
+    attributes:
+      label: Phone
+      placeholder: e.g. Pixel 9, Android 16 / iPhone 15, iOS 26
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: e.g. Windows 11 24H2
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: PhotoBackup version
+      description: Shown under Help > About.
+      placeholder: e.g. 0.1.0
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics report
+      description: >
+        Select the phone and click "Save diagnostics...", then attach the file here.
+        It contains file and folder names from your phone, so review it first.
+  - type: textarea
+    id: log
+    attributes:
+      label: Log excerpt
+      description: Relevant lines from %APPDATA%\PhotoBackup\photobackup.log, if any.
+      render: text
